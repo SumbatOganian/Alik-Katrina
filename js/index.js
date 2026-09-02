@@ -49,8 +49,8 @@ startMusic();
 	"use strict";
 
 	// Время в миллисекундах. Длительность самих переходов задана в timing.css.
-	const CARD_TEXT_PAUSE = 580;
-	const TEXT_STAGGER = 400;
+	const CARD_TEXT_PAUSE = 320;
+	const TEXT_STAGGER = 260;
 
 	function init() {
 		const sections = document.querySelectorAll("[data-wedding-timing]");
