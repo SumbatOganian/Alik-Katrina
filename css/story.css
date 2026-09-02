@@ -1,0 +1,199 @@
+@font-face {
+	font-family: "Story Script";
+	src: url("../fonts/GreatVibes-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Story Serif";
+	src: url("../fonts/CormorantGaramond-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+/* Все правила ограничены .w-story: hero, музыка и другие секции не затрагиваются. */
+.w-story,
+.w-story * {
+	box-sizing: border-box;
+}
+.w-story {
+	--story-wine: #641e26;
+	position: relative;
+	padding: clamp(60px, 7vw, 110px) 20px clamp(100px, 10vw, 160px);
+	color: var(--story-wine);
+	background: #f8e8d0 url("../images/cream-background.png") center / 100% 100%
+		no-repeat;
+	font:
+		400 1.25rem/1.55 "Story Serif",
+		Georgia,
+		serif;
+	text-align: center;
+}
+.w-story__container {
+	width: 100%;
+	max-width: 720px;
+	margin-inline: auto;
+}
+.w-story h2,
+.w-story h3,
+.w-story p,
+.w-story figure {
+	margin: 0;
+}
+.w-story .w-story__script {
+	font:
+		400 clamp(3rem, 8vw, 6.5rem)/1.3 "Story Script",
+		cursive;
+	text-wrap: balance;
+}
+.w-story__message {
+	max-width: 510px;
+	margin: 22px auto 0;
+	text-wrap: pretty;
+}
+.w-story__message p + p {
+	margin-top: 26px;
+}
+.w-story .w-story__date {
+	margin-top: 34px;
+	font-size: clamp(1.7rem, 4vw, 2.25rem);
+	line-height: 1.35;
+}
+.w-story__ornament {
+	display: block;
+	width: 150px;
+	height: auto;
+	margin: 28px auto 0;
+}
+
+.w-story__ornament_margin {
+  margin-bottom: 30px;
+}
+.w-story__venue {
+	margin-top: clamp(64px, 8vw, 105px);
+}
+.w-story__eyebrow {
+	font-size: 0.875rem;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+}
+.w-story__venue .w-story__script {
+	margin-top: 8px;
+}
+.w-story .w-story__photo {
+	margin-top: 28px;
+	padding: 5px;
+	border: 1px solid #b5a999;
+}
+.w-story__photo > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+}
+.w-story__details {
+	margin-top: 30px;
+}
+.w-story .w-story__name {
+	margin-top: 6px;
+	font:
+		400 clamp(3.5rem, 10vw, 5.5rem)/1.2 "Story Serif",
+		Georgia,
+		serif;
+}
+.w-story__address {
+	margin-top: 14px;
+	font-style: normal;
+	font-size: 1.125rem;
+	text-wrap: balance;
+}
+.w-story__details .w-story__ornament {
+	margin-top: 24px;
+	width: 120px;
+}
+.w-story .w-story__time {
+	margin-top: 20px;
+	font-size: 1.375rem;
+}
+.w-story__route {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 22px;
+	margin-top: 24px;
+	padding: 16px 24px;
+	min-height: 56px;
+	max-width: 100%;
+	color: #fff4e4;
+	background: #641e26;
+	border: 1px solid #641e26;
+	border-radius: 5px;
+	font: inherit;
+	font-size: 1.125rem;
+	text-decoration: none;
+	transition:
+		background-color 0.2s ease,
+		transform 0.2s ease;
+}
+.w-story__route img {
+	flex-shrink: 0;
+}
+.w-story__route:focus-visible {
+	outline: 3px solid #641e26;
+	outline-offset: 5px;
+}
+@media (hover: hover) {
+	.w-story__route:hover {
+		background: #44151b;
+		transform: translateY(-2px);
+	}
+}
+/* На desktop остаётся та же одна колонка, без перестановок элементов. */
+@media (min-width: 768px) {
+	.w-story {
+		font-size: 1.5rem;
+	}
+	.w-story__eyebrow {
+		font-size: 1rem;
+	}
+	.w-story__photo > img {
+		aspect-ratio: 4 / 3;
+	}
+	.w-story__address {
+		font-size: 1.25rem;
+	}
+	.w-story .w-story__time {
+		font-size: 1.625rem;
+	}
+	.w-story__route {
+		font-size: 1.375rem;
+		padding-inline: 32px;
+	}
+}
+/* JS добавляет этот класс только после создания наблюдателя. */
+.w-story .story-reveal-pending {
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.8s ease,
+		transform 0.8s ease;
+}
+.w-story .story-reveal-pending.is-visible {
+	opacity: 1;
+	transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.w-story .story-reveal-pending {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+	.w-story__route {
+		transition: none;
+	}
+	.w-story__route:hover {
+		transform: none;
+	}
+}
